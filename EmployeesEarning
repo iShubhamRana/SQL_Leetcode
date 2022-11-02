@@ -69,3 +69,13 @@ FROM
 WHERE
     a.ManagerId=b.Id 
         AND a.Salary > b.Salary;
+        
+        
+ ANOTHER LESS EFFICIENT SOLUTION
+ 1. Sub-query solution
+
+SELECT Name as Employee FROM Employee e
+WHERE Salary > (
+    Select Salary FROM Employee m WHERE m.Id = e.ManagerId
+)
+
