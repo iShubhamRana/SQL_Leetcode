@@ -1,6 +1,6 @@
 Question: https://leetcode.com/problems/duplicate-emails/
 
-TOPIC: Groupby
+TOPIC: Groupby, HAVING clause is used because we cannot use where condition with aggregate functions
 
 Approach I: Using GROUP BY and a temporary table [Accepted]
 
