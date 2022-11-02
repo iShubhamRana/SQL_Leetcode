@@ -1,0 +1,10 @@
+https://leetcode.com/problems/combine-two-tables/solution/
+
+Explaination:
+Since we want all the records from table1 so we can use outer join and the fields record who dont have a matching personId in table2 will have null coumns
+
+# Write your MySQL query statement below
+SELECT firstName , lastName, city  , state 
+FROM Person
+LEFT JOIN Address 
+ON Person.personId=Address.PersonId;
