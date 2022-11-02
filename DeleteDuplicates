@@ -1,0 +1,26 @@
+QUESTION:https://leetcode.com/problems/delete-duplicate-emails/submissions/
+
+TOPIC: DELETE
+
+EXPLAINATION: we can first perform an select query and can then convert it into a delete statement, from here we performed an join
+and deleted all the record from p1 , who have same email and more id
+
+
+# Please write a DELETE statement and DO NOT write a SELECT statement.
+
+SELECT p1.*
+FROM 
+    Person p1,
+    Person p2
+WHERE
+    p1.Email=p2.Email AND p1.ID > p2.ID;
+    
+
+
+# Write your MySQL query statement below
+DELETE p1
+FROM 
+    Person p1,
+    Person p2
+WHERE
+    p1.Email=p2.Email AND p1.ID > p2.ID;
