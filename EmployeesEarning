@@ -1,0 +1,71 @@
+Question:
+https://leetcode.com/problems/employees-earning-more-than-their-managers/
+
+********************************************************************************************************************************************
+Topic: Self Join
+
+As the name signifies, in SELF JOIN a table is joined to itself. 
+That is, each row of the table is joined with itself and all other rows depending on some conditions. 
+In other words we can say that it is a join between two copies of the same table.Syntax:
+
+SYNTAX:
+SELECT a.coulmn1 , b.column2
+FROM table_name a, table_name b
+WHERE some_condition;
+
+table_name: Name of the table.
+some_condition: Condition for selecting the rows.
+
+*******************************************************************************************************************************************
+
+LEETCODE EXPLAINATION:
+
+STEP:1 
+As this table has the employee's manager information, we probably need to select information from it twice.
+
+SELECT *
+FROM Employee AS a, Employee AS b
+;
+
+STEP:2
+Select from two tables will get the Cartesian product of these two tables. In this case, the output will be 4*4 = 16 records. However, what we interest is the employee's salary higher than his/her manager. So we should add two conditions in a WHERE clause like below.
+
+SELECT
+    *
+FROM
+    Employee AS a,
+    Employee AS b
+WHERE
+    a.ManagerId = b.Id
+        AND a.Salary > b.Salary
+;
+
+
+STEP:3
+As we only need to output the employee's name, so we modify the above code a little to get a solution.
+
+SELECT
+    a.Name AS 'Employee'
+FROM
+    Employee AS a,
+    Employee AS b
+WHERE
+    a.ManagerId = b.Id
+        AND a.Salary > b.Salary
+;
+
+*************************************************************************************************************************************
+
+
+
+
+Query:
+# Write your MySQL query statement below
+SELECT 
+    a.Name As 'Employee'
+FROM
+     Employee AS a,
+     Employee as b
+WHERE
+    a.ManagerId=b.Id 
+        AND a.Salary > b.Salary;
