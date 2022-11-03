@@ -1,0 +1,27 @@
+https://leetcode.com/problems/rising-temperature/
+
+
+
+TOPIC: DATEDIFF clause
+
+
+USE SELF JOIN
+
+SELECT p1.id as 'Id'
+FROM
+    Weather p1,
+    Weather p2
+WHERE p1.temperature > p2.temperature AND DATEDIFF(p1.recordDate,p2.recordDate)=1
+
+
+
+ANOTHER SYNTAX FOR SELF JOIN
+
+SELECT
+    weather.id AS 'Id'
+FROM
+    weather
+        JOIN
+    weather w ON DATEDIFF(weather.recordDate, w.recordDate) = 1
+        AND weather.Temperature > w.Temperature
+;
