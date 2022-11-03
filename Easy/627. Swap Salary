@@ -1,0 +1,32 @@
+Question:
+https://leetcode.com/problems/swap-salary/
+
+
+Topic: Case and one liner logical assignment
+
+
+CODE 1 : The code is similar to expressions we use in c++ like ()?:
+
+update salary
+    set sex= IF(sex="m" , "f" , "m");
+    
+    
+    
+CODE 2: use case
+
+Example:
+CASE
+    WHEN condition1 THEN result1
+    WHEN condition2 THEN result2
+    WHEN conditionN THEN resultN
+    ELSE result
+END; 
+
+
+Code:
+update salary
+    set sex= case sex
+        when 'm' then 'f'
+        else 'm'
+    end
+
