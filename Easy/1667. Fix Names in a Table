@@ -1,0 +1,14 @@
+Question: https://leetcode.com/problems/fix-names-in-a-table/
+
+APPROACH 1: Using subtring, lower and upper function
+1. Extract first and leftover character and then uppercase and lowerrcase them
+
+select user_id , CONCAT(upper(SUBSTR(name,1,1)) , lower(SUBSTR(name,2,length(name)))) as name
+FROM Users ORDER BY user_id
+
+
+
+APPROACH: same approach but using left and right functions()
+SELECT user_id, concat(upper(LEFT(name, 1)), lower(RIGHT(name, length(name)-1))) as name
+FROM users
+ORDER BY user_id;
