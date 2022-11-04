@@ -1,0 +1,32 @@
+Question: https://leetcode.com/problems/customer-who-visited-but-did-not-make-any-transactions/
+
+
+APPROACH 1: using subquery
+1. Use subquery to get all visit_ids from transactions table
+2. use groupby and check if the visit_id is not in the subquery result
+3. Then use aggregate function
+
+select customer_id , count(*) as count_no_trans
+from Visits
+where visit_id
+not in
+(    
+select distinct visit_id 
+from Transactions
+)
+group by customer_id
+
+
+APPROACH 2: using leftjoin 
+1. Perform a left join on visit_id and then visits with no transactions will have transaction_id as null
+2. we can group by customer_id and count visit_ids with transaction id as null
+
+select customer_id , count(*) as count_no_trans 
+from 
+    Visits v left join Transactions t
+on v.visit_id=t.visit_id
+where 
+    t.transaction_id is null
+group by customer_id
+
+    
