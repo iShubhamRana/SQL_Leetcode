@@ -1,0 +1,20 @@
+Question: https://leetcode.com/problems/sales-analysis-iii/
+
+
+Just distinct select product ids who violate the condition and then check for each product who is not in the subquery result
+
+
+Select product_id,product_name
+From Product
+Where product_id not in
+(
+Select distinct p.product_id as 'product_id'
+from Product p left join Sales s
+on p.product_id=s.product_id
+where s.sale_date is null 
+or 
+s.sale_date<'2019-01-01'
+or
+s.sale_date>'2019-03-31'
+
+)
