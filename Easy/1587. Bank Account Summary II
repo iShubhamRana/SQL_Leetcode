@@ -1,0 +1,14 @@
+Question: https://leetcode.com/problems/bank-account-summary-ii/
+
+Topic: groupby and sum aggregate and condition
+
+
+# Write your Myhttps://leetcode.com/problems/bank-account-summary-ii/SQL query statement below
+select u.name as NAME , sum(t.amount) as BALANCE
+from Users u inner join Transactions t
+on u.account=t.account
+group by u.account
+having BALANCE>10000
+
+
+
