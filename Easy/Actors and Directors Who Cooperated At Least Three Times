@@ -1,0 +1,11 @@
+Question: https://leetcode.com/problems/actors-and-directors-who-cooperated-at-least-three-times/
+
+Topic: group by multiple columns
+
+Just group by multiple columns and then count aggregate functoion to count members in that group
+
+
+Select actor_id,director_id
+From ActorDirector
+Group By actor_id,director_id
+having count(*)>=3;
