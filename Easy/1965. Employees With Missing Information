@@ -1,0 +1,31 @@
+QUESTION: https://leetcode.com/problems/employees-with-missing-information/
+
+
+APPROACH 1: USING FULL JOIN
+1. ON FULL JOIN MISSING VALUES IN BOTH TABLES ARE FILLED WITH NULL
+2. FULL JOIN IS NOT DIRECTLY AVAILABLE IN MYSQL THEREFORE WE NEED TO USE LEFT AND RIGHT JOIN WITH UNION
+
+SELECT T.employee_Id
+FROM
+( SELECT * FROM Employees LEFT JOIN Salaries USING(employee_id)
+    UNION
+    SELECT * FROM Employees RIGHT JOIN Salaries USING(employee_id) 
+) AS T
+WHERE T.salary IS NULL OR T.employee_id IS NULL
+ORDER BY employee_id
+
+
+
+
+
+APPROACH 2: USING 2 QUERIES AND THEN UNION , 
+JUST FIND EMPLOYEES_ID WITH NO SALARIES IN TABLE 2 AND VICE VERSA
+
+SELECT T.employee_Id
+FROM
+( SELECT * FROM Employees LEFT JOIN Salaries USING(employee_id)
+    UNION
+    SELECT * FROM Employees RIGHT JOIN Salaries USING(employee_id) 
+) AS T
+WHERE T.salary IS NULL OR T.employee_id IS NULL
+ORDER BY employee_id
