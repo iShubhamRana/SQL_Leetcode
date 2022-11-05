@@ -22,10 +22,10 @@ APPROACH 2: USING IFNULL
 
  IFNULL(expression, alt_value) : we just provide an alternative value for the expression
  
- SELECT
-    (SELECT DISTINCT
-            Salary
-        FROM
-            Employee
-        ORDER BY Salary DESC
-        LIMIT 1 OFFSET 1) AS SecondHighestSalary;
+SELECT
+    IFNULL(
+      (SELECT DISTINCT Salary
+       FROM Employee
+       ORDER BY Salary DESC
+        LIMIT 1 OFFSET 1),
+    NULL) AS SecondHighestSalary
