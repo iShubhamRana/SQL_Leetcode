@@ -1,0 +1,31 @@
+QUESTION:https://leetcode.com/problems/second-highest-salary/
+
+TOPIC: OFFSET : it tells from which row to select
+
+APPROACH 1: 
+1. Selecting from an empty table always gives a null in field
+2. use a second select statement for handling the case when there is only one record
+
+SELECT
+    (SELECT DISTINCT
+            Salary
+        FROM
+            Employee
+        ORDER BY Salary DESC
+        LIMIT 1 OFFSET 1) AS SecondHighestSalary
+;
+
+
+
+
+APPROACH 2: USING IFNULL
+
+ IFNULL(expression, alt_value) : we just provide an alternative value for the expression
+ 
+ SELECT
+    (SELECT DISTINCT
+            Salary
+        FROM
+            Employee
+        ORDER BY Salary DESC
+        LIMIT 1 OFFSET 1) AS SecondHighestSalary;
