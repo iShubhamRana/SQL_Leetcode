@@ -16,3 +16,4 @@ WHERE
     FROM Employee
     GROUP BY DepartmentId
 )
+
