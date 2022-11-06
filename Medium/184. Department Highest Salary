@@ -1,0 +1,18 @@
+Question: https://leetcode.com/problems/department-highest-salary/
+
+APPROACH: IF we find department id and max department salary then , after joining we can check if that employee has max salary for that department
+
+
+# Write your MySQL query statement below
+SELECT
+    Department.name AS 'Department',
+    Employee.name AS 'Employee',
+    Salary
+FROM
+    Employee INNER JOIN Department ON Employee.DepartmentId = Department.id
+WHERE
+    (Employee.DepartmentId , Salary) IN
+(   SELECT DepartmentId,MAX(Salary) 
+    FROM Employee
+    GROUP BY DepartmentId
+)
