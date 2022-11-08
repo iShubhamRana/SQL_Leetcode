@@ -40,3 +40,4 @@ where p1.x!=p2.x or p1.y!=p2.y
 order by shortest
 limit 1
 ) a
+
